@@ -8,6 +8,7 @@ public interface CalendarService {
 
     List<Calendar> findAllDays();
 
+    Calendar saveDays(Calendar day);
     Calendar updateDays(Calendar day);
 
     void deleteDayDescription(String day);

@@ -1,13 +1,18 @@
 package com.example.syncCalendar.service.impl;
 
 import com.example.syncCalendar.model.Calendar;
+import com.example.syncCalendar.repository.InMemoryCalendarDAO;
 import com.example.syncCalendar.service.CalendarService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class InMemoryCalendarServiceImpl implements CalendarService {
+
+    private final InMemoryCalendarDAO repository;
     @Override
     public List<Calendar> findAllDays() {
 //        return List.of(
@@ -43,12 +48,17 @@ public class InMemoryCalendarServiceImpl implements CalendarService {
 //                Calendar.builder().day(30).build(),
 //                Calendar.builder().day(31).build()
 //        );
-        return null;
+        return repository.findAllDays();
+    }
+
+    @Override
+    public Calendar saveDays(Calendar day) {
+        return repository.saveDays(day);
     }
 
     @Override
     public Calendar updateDays(Calendar day) {
-        return null;
+        return repository.updateDays(day);
     }
 
     @Override
