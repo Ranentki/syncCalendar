@@ -10,5 +10,5 @@ public interface CalendarService {
 
     Calendar updateDays(Calendar day);
 
-    void deleteDayDescription(String day);
+    void deleteDayDescription(Calendar day);
 }

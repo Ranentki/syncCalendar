@@ -5,9 +5,7 @@ import com.example.syncCalendar.service.CalendarService;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,13 +16,18 @@ public class CalendarController {
 
     private final CalendarService service;
 
-//    @GetMapping("/hello")
-//    public String getString(){
-//        return "This string is awesome!";
-//    }
-
     @GetMapping("/days")
     public List<Calendar> findAllDays(){
         return service.findAllDays();
+    }
+
+    @PatchMapping("/days")
+    public Calendar updateDays (@RequestBody Calendar day){
+        return service.updateDays(day);
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteDay (@RequestBody Calendar day){
+        service.deleteDayDescription(day);
     }
 }
