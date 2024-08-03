@@ -11,30 +11,29 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/days")
+//@RequestMapping("/days")
 public class CalendarController {
 
     private final CalendarService service;
 
-//    @GetMapping("/hello")
-//    public String getString(){
-//        return "This string is awesome!";
-//    }
-
-//    @GetMapping("/days")
-    @GetMapping
+    @GetMapping("/days")
     public List<Calendar> findAllDays(){
         return service.findAllDays();
     }
 
-    @PostMapping("save_day")
-    public String saveDays(@RequestBody Calendar day) {
-        service.saveDays(day);
-        return "Day saved";
-    }
+//    @PostMapping("save_day")
+//    public String saveDays(@RequestBody Calendar day) {
+//        service.saveDays(day);
+//        return "Day saved";
+//    }
 
-    @PutMapping("update_days")
+    @PatchMapping("/days")
     public Calendar updateDays (@RequestBody Calendar day){
         return service.updateDays(day);
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteDay (@RequestBody Calendar day){
+        service.deleteDayDescription(day);
     }
 }

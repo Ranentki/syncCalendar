@@ -3,33 +3,39 @@ package com.example.syncCalendar.repository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import com.example.syncCalendar.model.Calendar;
 import java.util.List;
 import java.util.stream.IntStream;
 
 @Repository
 public class InMemoryCalendarDAO {
 
-    private final List<com.example.syncCalendar.model.Calendar> DAYS = new ArrayList<>();
+    private List<Calendar> days;
 
-
-    public List<com.example.syncCalendar.model.Calendar> findAllDays() {
-        return DAYS;
+    public InMemoryCalendarDAO(){
+        days = new ArrayList<>();
+        for(int i = 1; i < 32; i++){
+            days.add(new Calendar(i,null));
+        }
     }
 
-    public com.example.syncCalendar.model.Calendar saveDays(com.example.syncCalendar.model.Calendar day) {
-        DAYS.add(day);
+    public List<Calendar> findAllDays() {
+        return days;
+    }
+
+//    public Calendar saveDays(Calendar day) {
+//        days.add(day);
+//        return day;
+//    }
+
+    public Calendar updateDays(Calendar day) {
+        days.set(day.getDay()-1, day);
         return day;
     }
 
-    public com.example.syncCalendar.model.Calendar updateDays(com.example.syncCalendar.model.Calendar day) {
-        // TODO: 01.08.2024  
-        return null;
-    }
 
-
-    public void deleteDayDescription(String day) {
-        // TODO: 01.08.2024  
+    public void deleteDayDescription(Calendar day) {
+        days.set(day.getDay()-1, new Calendar(day.getDay(), null));
     }
 
 }
