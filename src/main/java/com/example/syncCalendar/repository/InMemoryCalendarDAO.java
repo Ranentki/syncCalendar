@@ -23,10 +23,6 @@ public class InMemoryCalendarDAO {
         return days;
     }
 
-//    public Calendar saveDays(Calendar day) {
-//        days.add(day);
-//        return day;
-//    }
 
     public Calendar updateDays(Calendar day) {
         days.set(day.getDay()-1, day);

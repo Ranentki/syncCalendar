@@ -21,12 +21,6 @@ public class CalendarController {
         return service.findAllDays();
     }
 
-//    @PostMapping("save_day")
-//    public String saveDays(@RequestBody Calendar day) {
-//        service.saveDays(day);
-//        return "Day saved";
-//    }
-
     @PatchMapping("/days")
     public Calendar updateDays (@RequestBody Calendar day){
         return service.updateDays(day);
