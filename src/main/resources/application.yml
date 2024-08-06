@@ -1,1 +1,9 @@
-spring.application.name=demo
+spring:
+  application:
+    name: demo
+app:
+  datasource:
+    jdbc-url: jdbc:postgresql://94.228.117.246:5432/demodb
+    username: postgres
+    password: password
+    pool-size: 30

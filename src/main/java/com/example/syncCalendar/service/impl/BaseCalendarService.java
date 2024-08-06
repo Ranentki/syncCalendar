@@ -1,24 +1,28 @@
 package com.example.syncCalendar.service.impl;
 
 import com.example.syncCalendar.model.Calendar;
-import com.example.syncCalendar.repository.InMemoryCalendarDAO;
+import com.example.syncCalendar.repository.CalendarDAO;
 import com.example.syncCalendar.service.CalendarService;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class InMemoryCalendarServiceImpl implements CalendarService {
+public class BaseCalendarService implements CalendarService {
 
-    private final InMemoryCalendarDAO dao;
-    public InMemoryCalendarServiceImpl (InMemoryCalendarDAO dao) {
+    private final CalendarDAO dao;
+
+    // @Qualifier позволяет нам выбрать необходимую имплементацию
+    public BaseCalendarService(@Qualifier("postgres") CalendarDAO dao) {
         this.dao = dao;
     }
+
     @Override
     public List<Calendar> findAllDays() {
         return dao.findAllDays();
     }
-
 
     @Override
     public Calendar updateDays(Calendar day) {
@@ -27,6 +31,6 @@ public class InMemoryCalendarServiceImpl implements CalendarService {
 
     @Override
     public void deleteDayDescription(Calendar day) {
-         dao.deleteDayDescription(day);
+        dao.deleteDayDescription(day);
     }
 }
