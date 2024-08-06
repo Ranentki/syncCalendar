@@ -1,21 +1,22 @@
-package com.example.syncCalendar.repository;
+package com.example.syncCalendar.repository.impl;
 
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import com.example.syncCalendar.model.Calendar;
-import java.util.List;
-import java.util.stream.IntStream;
+import com.example.syncCalendar.repository.CalendarDAO;
 
-@Repository
-public class InMemoryCalendarDAO {
+import java.util.List;
+
+@Repository("inMemory")
+public class InMemoryCalendarDAO implements CalendarDAO {
 
     private List<Calendar> days;
 
-    public InMemoryCalendarDAO(){
+    public InMemoryCalendarDAO() {
         days = new ArrayList<>();
-        for(int i = 1; i < 32; i++){
-            days.add(new Calendar(i,null));
+        for (int i = 1; i < 32; i++) {
+            days.add(new Calendar(i, null));
         }
     }
 
@@ -23,15 +24,13 @@ public class InMemoryCalendarDAO {
         return days;
     }
 
-
     public Calendar updateDays(Calendar day) {
-        days.set(day.getDay()-1, day);
+        days.set(day.getDay() - 1, day);
         return day;
     }
 
-
     public void deleteDayDescription(Calendar day) {
-        days.set(day.getDay()-1, new Calendar(day.getDay(), null));
+        days.set(day.getDay() - 1, new Calendar(day.getDay(), null));
     }
 
 }
