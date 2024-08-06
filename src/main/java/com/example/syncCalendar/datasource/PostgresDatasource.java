@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
+// Datasource содержит информацию о том, как подключаться к базе данных
+// в данном случае мы просто указываем ему на файл application.yml.
+// Конкретнее на поле app.datasource
 public class PostgresDatasource {
 
     @Bean

@@ -14,6 +14,7 @@ public class BaseCalendarService implements CalendarService {
 
     private final CalendarDAO dao;
 
+    // @Qualifier позволяет нам выбрать необходимую имплементацию
     public BaseCalendarService(@Qualifier("postgres") CalendarDAO dao) {
         this.dao = dao;
     }
