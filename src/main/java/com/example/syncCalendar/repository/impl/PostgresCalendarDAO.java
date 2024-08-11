@@ -28,7 +28,8 @@ public class PostgresCalendarDAO implements CalendarDAO {
 
     @Override
     public Calendar updateDays(Calendar day) {
-        final String sqlStatement = "INSERT INTO calendar (day, description) VALUES (?, ?)";
+        final String sqlStatement = "INSERT INTO calendar (day, description) VALUES (?, ?) " +
+                "ON CONFLICT (day) DO UPDATE SET description = EXCLUDED.description";
         jdbcTemplate.update(sqlStatement, day.getDay(), day.getDescription());
         return day;
     }
