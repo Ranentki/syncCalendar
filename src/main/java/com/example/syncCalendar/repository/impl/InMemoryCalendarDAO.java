@@ -29,6 +29,11 @@ public class InMemoryCalendarDAO implements CalendarDAO {
         return day;
     }
 
+    @Override
+    public Calendar findDescriptionByDay(Calendar day) {
+        return null;
+    }
+
     public void deleteDayDescription(Calendar day) {
         days.set(day.getDay() - 1, new Calendar(day.getDay(), null));
     }
