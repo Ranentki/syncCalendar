@@ -30,4 +30,7 @@ public class CalendarController {
     public void deleteDay (@RequestBody Calendar day){
         service.deleteDayDescription(day);
     }
+
+    @GetMapping("/day")
+    public Calendar findDescriptionByDay(@RequestParam int day) {return service.findDescriptionByDay(day); }
 }

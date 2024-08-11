@@ -3,6 +3,7 @@ spring:
     name: demo
 app:
   datasource:
+    ddl_auto: update
     jdbc-url: jdbc:postgresql://94.228.117.246:5432/demodb
     username: postgres
     password: password
