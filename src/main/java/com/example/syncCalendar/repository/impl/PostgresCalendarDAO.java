@@ -34,6 +34,14 @@ public class PostgresCalendarDAO implements CalendarDAO {
     }
 
     @Override
+    public Calendar findDescriptionByDay(int day) {
+        final String sqlStatement = "SELECT description FROM calendar WHERE day = ?";
+        List<String> results = jdbcTemplate.queryForList(sqlStatement, String.class, day);
+        String description = results.isEmpty() ? null : results.get(0);
+        return new Calendar(day, description);
+    }
+
+    @Override
     public void deleteDayDescription(Calendar day) {
         final String sqlStatement = "DELETE FROM calendar WHERE day = ?";
         jdbcTemplate.update(sqlStatement, day.getDay());
