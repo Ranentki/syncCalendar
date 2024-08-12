@@ -4,7 +4,7 @@ spring:
 app:
   datasource:
     ddl_auto: update
-    jdbc-url: jdbc:postgresql://94.228.117.246:5432/demodb
+    jdbc-url: ${JDBC_URL}
     username: postgres
-    password: password
+    password: ${POSTGRES_PASSWORD}
     pool-size: 30
