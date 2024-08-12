@@ -33,4 +33,9 @@ public class BaseCalendarService implements CalendarService {
     public void deleteDayDescription(Calendar day) {
         dao.deleteDayDescription(day);
     }
+
+    @Override
+    public Calendar findDescriptionByDay(int day) {
+        return dao.findDescriptionByDay(day);
+    }
 }
